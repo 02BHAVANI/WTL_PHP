@@ -1,0 +1,1441 @@
+1. Write a PHP script to take number from user and print the table of that number.
+
+Code –
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Table of a Number</title>
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ background-color: #f2f2f2;
+ }
+ h2 {
+ text-align: center;
+ margin-top: 30px;
+ color: #1e90ff;
+ }
+ table {
+ margin: 0 auto;
+ border-collapse: collapse;
+ background-color: #fff;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ margin-top: 50px;
+ }
+ th,
+ td {
+ padding: 10px;
+ border: 1px solid #ddd;
+ text-align: center;
+ }
+ th {
+ background-color: #f2f2f2;
+ color: #666;
+ font-weight: bold;
+ }
+ input[type="number"] {
+ padding: 10px;
+ border-radius: 5px;
+ border: 1px solid #ddd;
+ margin-right: 10px;
+ }
+ input[type="submit"] {
+ background-color: #4CAF50;
+ color: #fff;
+ padding: 10px;
+ border-radius: 5px;
+ border: none;
+ cursor: pointer;
+ }
+ input[type="submit"]:hover {
+ background-color: #3e8e41;
+ }
+ </style>
+Experiment 7
+Aim :-A] Write a PHP script to take number from user and print the table of that number.
+
+
+
+</head>
+<body>
+ <div style="display: flex; justify-content: center;">
+ <form method="post">
+ <label for="number">Enter a number:</label>
+ <input type="number" name="number" id="number" required>
+ <input type="submit" value="Generate Table">
+ </form>
+ </div>
+ <?php
+ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+ $number = $_POST['number'];
+ echo "<h2>Table of $number</h2>";
+ echo "<table>";
+ echo "<tr><th style='background-color: #1e90ff; color:
+#fff;'>Number</th><th style='background-color: #1e90ff; color:
+#fff;'>Multiplier</th><th style='background-color: #1e90ff; color:
+#fff;'>Result</th></tr>";
+ for ($i = 1; $i <= 10; $i++) {
+ echo "<tr><td style='background-color: #f2f2f2; color:
+#1e90ff;'>$number</td><td style='background-color: #f2f2f2; color:
+#1e90ff;'>$i</td><td style='background-color: #f2f2f2; color: #1e90ff;'>" .
+($number * $i) . "</td></tr>";
+ }
+ echo "</table>";
+ }
+ ?>
+</body>
+</html>
+
+
+
+
+Q2) Write a program to check student grade based on the marks using if-else statement.
+Conditions:
+i. If marks are 60% or more, grade will be First Division.
+ii. If marks between 45% to 59%, grade will be Second Division.
+iii. If marks between 33% to 44%, grade will be Third Division.
+iv. If marks are less than 33%, student will be Fail.
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Grade Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 8px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Grade Checker</h1>
+    <label for="marks">Enter your marks: </label>
+    <input type="number" id="marks" min="0" max="100">
+    <button onclick="checkGrade()">Check Grade</button>
+
+    <div id="result"></div>
+
+    <script>
+        function checkGrade() {
+            var marks = parseFloat(document.getElementById("marks").value);
+
+            if (marks >= 60) {
+                document.getElementById("result").textContent = "Grade: First Division";
+            } else if (marks >= 45 && marks <= 59) {
+                document.getElementById("result").textContent = "Grade: Second Division";
+            } else if (marks >= 33 && marks <= 44) {
+                document.getElementById("result").textContent = "Grade: Third Division";
+            } else if (marks < 33) {
+                document.getElementById("result").textContent = "Grade: Fail";
+            } else {
+                document.getElementById("result").textContent = "Invalid input. Please enter a valid percentage.";
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+Q3) Write a program to show day of the week (for example: Monday) based on numbers using
+switch/case statements.
+Conditions:
+i. You can pass 1 to 7 number in switch
+ii. Day 1 will be considered as Monday
+iii. If number is not between 1 to 7, show invalid number in default
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Day of the Week</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 8px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Day of the Week</h1>
+    <label for="dayNumber">Enter a number (1 to 7): </label>
+    <input type="number" id="dayNumber" min="1" max="7">
+    <button onclick="findDay()">Find Day</button>
+
+    <div id="result"></div>
+
+    <script>
+        function findDay() {
+            var dayNumber = parseInt(document.getElementById("dayNumber").value);
+            var day;
+
+            switch (dayNumber) {
+                case 1:
+                    day = "Monday";
+                    break;
+                case 2:
+                    day = "Tuesday";
+                    break;
+                case 3:
+                    day = "Wednesday";
+                    break;
+                case 4:
+                    day = "Thursday";
+                    break;
+                case 5:
+                    day = "Friday";
+                    break;
+                case 6:
+                    day = "Saturday";
+                    break;
+                case 7:
+                    day = "Sunday";
+                    break;
+                default:
+                    day = "Invalid number";
+                    break;
+            }
+
+            document.getElementById("result").innerHTML = "Day of the week: " + day;
+        }
+    </script>
+</body>
+</html>
+
+
+
+Q4) Write a PHP program to find factorial of a number using recursive function. Take Input via
+Prompt function and show output on browser screen
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Factorial Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        input[type="text"], input[type="submit"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 8px 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Factorial Calculator</h1>
+    <form method="post" action="">
+        Enter a number: <input type="text" name="number">
+        <input type="submit" name="submit" value="Calculate Factorial">
+    </form>
+
+    <?php
+    function factorial($n) {
+        if ($n === 0) {
+            return 1;
+        } else {
+            return $n * factorial($n - 1);
+        }
+    }
+
+    if (isset($_POST['submit'])) {
+        $number = isset($_POST['number']) ? intval($_POST['number']) : 0;
+
+        if ($number >= 0) {
+            $result = factorial($number);
+            echo "<p>Factorial of $number is: $result</p>";
+        } else {
+            echo "<p class='error'>Please enter a non-negative integer.</p>";
+        }
+    }
+    ?>
+</body>
+</html>
+
+
+
+
+Q5) Write a program to calculate Electricity bill in PHP
+Conditions:
+i. For first 50 units – Rs. 3.50/unit
+ii. For next 100 units – Rs. 4.00/unit
+iii. For next 100 units – Rs. 5.20/unit
+iv. For units above 250 – Rs. 6.50/unit
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Electricity Bill Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        input[type="text"], input[type="submit"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 8px 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Electricity Bill Calculator</h1>
+    <form method="post" action="">
+        Enter the total units consumed: <input type="text" name="units">
+        <input type="submit" name="calculate" value="Calculate Bill">
+    </form>
+
+    <?php
+    if (isset($_POST['calculate'])) {
+        $units = isset($_POST['units']) ? intval($_POST['units']) : 0;
+        $totalBill = 0;
+
+        if ($units <= 50) {
+            $totalBill = $units * 3.50;
+        } elseif ($units <= 150) {
+            $totalBill = (50 * 3.50) + (($units - 50) * 4.00);
+        } elseif ($units <= 250) {
+            $totalBill = (50 * 3.50) + (100 * 4.00) + (($units - 150) * 5.20);
+        } else {
+            $totalBill = (50 * 3.50) + (100 * 4.00) + (100 * 5.20) + (($units - 250) * 6.50);
+        }
+
+        echo "<p>Total units consumed: $units</p>";
+        echo "<p>Electricity bill: Rs. $totalBill</p>";
+    }
+    ?>
+</body>
+</html>
+
+
+
+6. Write a PHP program to find Square Root of a number using PHP function. Take Input via
+Textbox and show output on browser screen
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Square Root Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        input[type="text"], input[type="submit"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 8px 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Square Root Calculator</h1>
+    <form method="post" action="">
+        Enter a number: <input type="text" name="number">
+        <input type="submit" name="calculate" value="Calculate Square Root">
+    </form>
+
+    <?php
+    if (isset($_POST['calculate'])) {
+        $number = isset($_POST['number']) ? floatval($_POST['number']) : 0;
+
+        if ($number >= 0) {
+            $squareRoot = sqrt($number);
+            echo "<p>Square root of $number is: " . number_format($squareRoot, 2) . "</p>";
+        } else {
+            echo "<p class='error'>Please enter a non-negative number.</p>";
+        }
+    }
+    ?>
+</body>
+</html>
+
+
+
+
+
+7. Write a PHP Script with function to check whether a number is prime or not.
+Note: A prime number (or a prime) is a natural number greater than 1 that has no positive
+divisors other than 1 and itself
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prime Number Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        input[type="text"], input[type="submit"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 8px 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prime Number Checker</h1>
+    <form method="post" action="">
+        Enter a number: <input type="text" name="number">
+        <input type="submit" name="check" value="Check Prime">
+    </form>
+
+    <?php
+    function isPrime($n) {
+        if ($n <= 1) {
+            return false;
+        }
+
+        for ($i = 2; $i <= sqrt($n); $i++) {
+            if ($n % $i == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    if (isset($_POST['check'])) {
+        $number = isset($_POST['number']) ? intval($_POST['number']) : 0;
+
+        if (isPrime($number)) {
+            echo "<p>$number is a prime number.</p>";
+        } else {
+            echo "<p>$number is not a prime number.</p>";
+        }
+    }
+    ?>
+</body>
+</html>
+
+
+
+
+
+8. Write a PHP function script that checks whether a passed string is a palindrome or not?
+(Take Input Through Textbox and Display result on Client Browser screen)
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Palindrome Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        input[type="text"], input[type="submit"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 8px 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Palindrome Checker</h1>
+    <form method="post" action="">
+        Enter a string: <input type="text" name="inputString">
+        <input type="submit" name="check" value="Check Palindrome">
+    </form>
+
+    <?php
+    function isPalindrome($str) {
+        $str = str_replace(' ', '', $str); // Remove spaces
+        $str = strtolower($str); // Convert to lowercase
+        $strReversed = strrev($str); // Reverse the string
+
+        return $str === $strReversed;
+    }
+
+    if (isset($_POST['check'])) {
+        $inputString = isset($_POST['inputString']) ? $_POST['inputString'] : '';
+        
+        if (isPalindrome($inputString)) {
+            echo "<p>'$inputString' is a palindrome.</p>";
+        } else {
+            echo "<p>'$inputString' is not a palindrome.</p>";
+        }
+    }
+    ?>
+</body>
+</html>
+
+
+
+
+9. Write a PHP script to : -
+a) transform a string all uppercase letters.
+b) transform a string all lowercase letters.
+c) make a string's first character uppercase.
+d) make a string's first character of all the words uppercase.
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Transformation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        input[type="text"], input[type="submit"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 8px 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>String Transformation</h1>
+    <form method="post" action="">
+        Enter a string: <input type="text" name="inputString">
+        <input type="submit" name="transform" value="Transform String">
+    </form>
+
+    <?php
+    if (isset($_POST['transform'])) {
+        $inputString = isset($_POST['inputString']) ? $_POST['inputString'] : '';
+
+        echo "<p>Original string: $inputString</p>";
+        echo "<p>Uppercase: " . strtoupper($inputString) . "</p>";
+        echo "<p>Lowercase: " . strtolower($inputString) . "</p>";
+        echo "<p>First character uppercase: " . ucfirst($inputString) . "</p>";
+        echo "<p>First character of words uppercase: " . ucwords($inputString) . "</p>";
+    }
+    ?>
+</body>
+</html>
+
+
+
+
+
+10. Write a PHP program to compute and return the square root of a given number.
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Square Root Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        input[type="text"], input[type="submit"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 8px 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Square Root Calculator</h1>
+    <form method="post" action="">
+        Enter a number: <input type="text" name="number">
+        <input type="submit" name="calculate" value="Calculate Square Root">
+    </form>
+
+    <?php
+    if (isset($_POST['calculate'])) {
+        $number = isset($_POST['number']) ? floatval($_POST['number']) : 0;
+
+        $squareRoot = sqrt($number);
+
+        echo "<p>Square root of $number is: " . number_format($squareRoot, 2) . "</p>";
+    }
+    ?>
+</body>
+</html>
+
+
+
+
+11. Write a PHP program to reverse the digits of an integer
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Integer Digit Reversal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        input[type="number"], input[type="submit"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 8px 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Integer Digit Reversal</h1>
+    <form method="post" action="">
+        Enter an integer: <input type="number" name="integer">
+        <input type="submit" name="reverse" value="Reverse Digits">
+    </form>
+
+    <?php
+    if (isset($_POST['reverse'])) {
+        $integer = isset($_POST['integer']) ? intval($_POST['integer']) : 0;
+
+        $reversedInteger = intval(strrev(strval($integer)));
+
+        echo "<p>Original integer: $integer</p>";
+        echo "<p>Reversed integer: $reversedInteger</p>";
+    }
+    ?>
+</body>
+</html>
+
+
+
+
+12. Write a PHP program to check whether a given positive integer is a power of four.
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Power of Four Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        input[type="number"], input[type="submit"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 8px 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Power of Four Checker</h1>
+    <form method="post" action="">
+        Enter a positive integer: <input type="number" name="integer" min="1">
+        <input type="submit" name="check" value="Check Power of Four">
+    </form>
+
+    <?php
+    if (isset($_POST['check'])) {
+        $integer = isset($_POST['integer']) ? intval($_POST['integer']) : 0;
+
+        $result = $integer;
+        while ($result > 1 && $result % 4 == 0) {
+            $result /= 4;
+        }
+
+        if ($result == 1) {
+            echo "<p>$integer is a power of four.</p>";
+        } else {
+            echo "<p>$integer is not a power of four.</p>";
+        }
+    }
+    ?>
+</body>
+</html>
+
+
+
+13. Write a PHP Function script to accept Temperature from user in Fahrenheit and convert it
+degree Celsius and Vice Versa with both separate output on browser screen.
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        input[type="text"], input[type="submit"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 8px 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <form method="post" action="">
+        Enter temperature in Fahrenheit: <input type="text" name="fahrenheit">
+        <input type="submit" name="convert" value="Convert">
+    </form>
+
+    <?php
+    function fahrenheitToCelsius($fahrenheit) {
+        return ($fahrenheit - 32) * 5/9;
+    }
+
+    function celsiusToFahrenheit($celsius) {
+        return ($celsius * 9/5) + 32;
+    }
+
+    if (isset($_POST['convert'])) {
+        $fahrenheit = isset($_POST['fahrenheit']) ? floatval($_POST['fahrenheit']) : 0;
+
+        $celsius = fahrenheitToCelsius($fahrenheit);
+        $fahrenheitConverted = celsiusToFahrenheit($celsius);
+
+        echo "<p>$fahrenheit&deg;F is equal to $celsius&deg;C.</p>";
+        echo "<p>$celsius&deg;C is equal to $fahrenheitConverted&deg;F.</p>";
+    }
+    ?>
+</body>
+</html>
+
+
+
+
+14. Write a PHP Script to Add the following filed in Student Table with database connection:
+i. Roll Number
+ii. Name
+iii. City
+iv. Pin Code
+Show the Result on Browser Screen through Display Record button
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student Record</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        input[type="text"], input[type="number"], input[type="submit"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 8px 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Student Record</h1>
+    <form method="post" action="">
+        Roll Number: <input type="number" name="roll_number" required><br><br>
+        Name: <input type="text" name="name" required><br><br>
+        City: <input type="text" name="city" required><br><br>
+        Pin Code: <input type="number" name="pin_code" required><br><br>
+        <input type="submit" name="add_record" value="Add Record">
+    </form>
+
+    <?php
+    // Database connection configuration
+    $host = "your_host";
+    $username = "your_username";
+    $password = "your_password";
+    $database = "your_database";
+
+    // Create a connection to the database
+    $conn = mysqli_connect($host, $username, $password, $database);
+
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    // Check if the "Add Record" button is clicked
+    if (isset($_POST['add_record'])) {
+        $rollNumber = $_POST['roll_number'];
+        $name = $_POST['name'];
+        $city = $_POST['city'];
+        $pinCode = $_POST['pin_code'];
+
+        // Insert the data into the Student Table
+        $sql = "INSERT INTO Student (RollNumber, Name, City, PinCode) VALUES ('$rollNumber', '$name', '$city', '$pinCode')";
+
+        if (mysqli_query($conn, $sql)) {
+            echo "<p>Record added successfully.</p>";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    }
+
+    // Display all records in the Student Table
+    $result = mysqli_query($conn, "SELECT * FROM Student");
+    if (mysqli_num_rows($result) > 0) {
+        echo "<h2>Student Records</h2>";
+        echo "<table>";
+        echo "<tr><th>Roll Number</th><th>Name</th><th>City</th><th>Pin Code</th></tr>";
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>".$row['RollNumber']."</td>";
+            echo "<td>".$row['Name']."</td>";
+            echo "<td>".$row['City']."</td>";
+            echo "<td>".$row['PinCode']."</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<p>No records found in the Student Table.</p>";
+    }
+
+    // Close the database connection
+    mysqli_close($conn);
+    ?>
+</body>
+</html>
+
+
+
+
+15. Write a PHP script Add Record in Employee Table with Database connection:
+i. EMP No
+ii. Name
+iii. Department
+iv. Salary
+ Display Result of Employee having Salary Greater than 50000 Rs per month.
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Employee Record</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        input[type="number"], input[type="text"], input[type="submit"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 8px 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Employee Record</h1>
+    <form method="post" action="">
+        EMP No: <input type="number" name="emp_no" required><br><br>
+        Name: <input type="text" name="name" required><br><br>
+        Department: <input type="text" name="department" required><br><br>
+        Salary (Rs): <input type="number" name="salary" required><br><br>
+        <input type="submit" name="add_record" value="Add Record">
+    </form>
+
+    <?php
+    // Database connection configuration
+    $host = "your_host";
+    $username = "your_username";
+    $password = "your_password";
+    $database = "your_database";
+
+    // Create a connection to the database
+    $conn = mysqli_connect($host, $username, $password, $database);
+
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    // Check if the "Add Record" button is clicked
+    if (isset($_POST['add_record'])) {
+        $empNo = $_POST['emp_no'];
+        $name = $_POST['name'];
+        $department = $_POST['department'];
+        $salary = $_POST['salary'];
+
+        // Insert the data into the Employee Table
+        $sql = "INSERT INTO Employee (EmpNo, Name, Department, Salary) VALUES ('$empNo', '$name', '$department', '$salary')";
+
+        if (mysqli_query($conn, $sql)) {
+            echo "<p>Record added successfully.</p>";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    }
+
+    // Display records with a salary greater than 50,000 Rs per month
+    $result = mysqli_query($conn, "SELECT * FROM Employee WHERE Salary > 50000");
+    if (mysqli_num_rows($result) > 0) {
+        echo "<h2>Employees with Salary > 50,000 Rs per month</h2>";
+        echo "<table>";
+        echo "<tr><th>EMP No</th><th>Name</th><th>Department</th><th>Salary (Rs)</th></tr>";
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>".$row['EmpNo']."</td>";
+            echo "<td>".$row['Name']."</td>";
+            echo "<td>".$row['Department']."</td>";
+            echo "<td>".$row['Salary']."</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<p>No records found with a salary greater than 50,000 Rs per month.</p>";
+    }
+
+    // Close the database connection
+    mysqli_close($conn);
+    ?>
+</body>
+</html>
+
+
+
+
+16. Write a PHP script Add Record in Users Table with Database Connection:
+i. User id
+ii. User Name
+iii. Password
+ Update the User Password using update option on browser screen and show updated result
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add and Update User Record</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        input[type="text"], input[type="password"], input[type="number"], input[type="submit"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 8px 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add and Update User Record</h1>
+    <form method="post" action="">
+        User ID: <input type="number" name="user_id" required><br><br>
+        User Name: <input type="text" name="user_name" required><br><br>
+        Password: <input type="password" name="password" required><br><br>
+        <input type="submit" name="add_record" value="Add Record">
+    </form>
+
+    <h2>Update Password</h2>
+    <form method="post" action="">
+        User ID: <input type="number" name="update_user_id" required><br><br>
+        New Password: <input type="password" name="new_password" required><br><br>
+        <input type="submit" name="update_password" value="Update Password">
+    </form>
+
+    <?php
+    // Database connection configuration
+    $host = "your_host";
+    $username = "your_username";
+    $password = "your_password";
+    $database = "your_database";
+
+    // Create a connection to the database
+    $conn = mysqli_connect($host, $username, $password, $database);
+
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    // Check if the "Add Record" button is clicked
+    if (isset($_POST['add_record'])) {
+        $user_id = $_POST['user_id'];
+        $user_name = $_POST['user_name'];
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+        // Insert the data into the Users Table
+        $sql = "INSERT INTO Users (UserId, UserName, Password) VALUES ('$user_id', '$user_name', '$password')";
+
+        if (mysqli_query($conn, $sql)) {
+            echo "<p>Record added successfully.</p>";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    }
+
+    // Check if the "Update Password" button is clicked
+    if (isset($_POST['update_password'])) {
+        $update_user_id = $_POST['update_user_id'];
+        $new_password = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
+
+        // Update the user's password
+        $update_sql = "UPDATE Users SET Password = '$new_password' WHERE UserId = '$update_user_id'";
+
+        if (mysqli_query($conn, $update_sql)) {
+            echo "<p>Password updated successfully.</p>";
+        } else {
+            echo "Error: " . $update_sql . "<br>" . mysqli_error($conn);
+        }
+    }
+
+    // Display all records in the Users Table
+    $result = mysqli_query($conn, "SELECT * FROM Users");
+    if (mysqli_num_rows($result) > 0) {
+        echo "<h2>User Records</h2>";
+        echo "<table>";
+        echo "<tr><th>User ID</th><th>User Name</th></tr>";
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>".$row['UserId']."</td>";
+            echo "<td>".$row['UserName']."</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<p>No records found in the Users Table.</p>";
+    }
+
+    // Close the database connection
+    mysqli_close($conn);
+    ?>
+</body>
+</html>
+
+
